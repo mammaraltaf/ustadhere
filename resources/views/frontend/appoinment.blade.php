@@ -131,6 +131,7 @@
     <script>
         $("#kt_datepicker_10").flatpickr({
             enableTime: true,
+            minDate: "today",
             dateFormat: "Y-m-d H:i",
         });
     </script>

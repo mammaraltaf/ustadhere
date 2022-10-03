@@ -16,7 +16,8 @@
                     <span class="text-uppercase text-sm letter-spacing ">TRUST US TO FIX IT RIGHT THE FIRST TIME</span>
                     <h1 class="mb-3 mt-3">Your most trusted Maintenance Company</h1>
 
-                    <p class="mb-4 pr-5">We offer quality Home/Office maintenance services in Pakistan at affordable rates. We can help you design the kitchen of your dreams and make changes to the bathrooms of your choice.</p>
+                    <p class="mb-4 pr-5">We offer quality Home/Office maintenance services in Pakistan at affordable rates. Dismantling your Electrical worries - Complete Electrical Solutions for Residential & Commercials
+                        .</p>
                     <div class="btn-container ">
                         <a href="{{route('frontend.appointment')}}" target="_blank" class="btn btn-main-2 btn-icon btn-round-full">Make appoinment <i class="icofont-simple-right ml-2  "></i></a>
                         <a href="tel:03475055405" class="btn btn-main btn-round-full">Call Now</a>
@@ -350,74 +351,74 @@ s
         </div>
     </div>
 </section>
-<section class="section clients">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-7">
-                <div class="section-title text-center">
-                    <h2>Our Clients</h2>
-                    <div class="divider mx-auto my-4"></div>
-                    <p>We offer quality Home/Office maintenance services in Pakistan at affordable rates.</p>
-                </div>
-            </div>
-        </div>
-    </div>
+{{--<section class="section clients">--}}
+{{--    <div class="container">--}}
+{{--        <div class="row justify-content-center">--}}
+{{--            <div class="col-lg-7">--}}
+{{--                <div class="section-title text-center">--}}
+{{--                    <h2>Our Clients</h2>--}}
+{{--                    <div class="divider mx-auto my-4"></div>--}}
+{{--                    <p>We offer quality Home/Office maintenance services in Pakistan at affordable rates.</p>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
 
-    <div class="container">
-        <div class="row clients-logo">
-            <div class="col-lg-2">
-                <div class="client-thumb">
-                    <img src="{{asset("frontend/images/about/1.png")}}" alt="" class="img-fluid">
-                </div>
-            </div>
-            <div class="col-lg-2">
-                <div class="client-thumb">
-                    <img src="{{asset("frontend/images/about/2.png")}}" alt="" class="img-fluid">
-                </div>
-            </div>
-            <div class="col-lg-2">
-                <div class="client-thumb">
-                    <img src="{{asset("frontend/images/about/3.png")}}" alt="" class="img-fluid">
-                </div>
-            </div>
-            <div class="col-lg-2">
-                <div class="client-thumb">
-                    <img src="{{asset("frontend/images/about/4.png")}}" alt="" class="img-fluid">
-                </div>
-            </div>
-            <div class="col-lg-2">
-                <div class="client-thumb">
-                    <img src="{{asset("frontend/images/about/5.png")}}" alt="" class="img-fluid">
-                </div>
-            </div>
-            <div class="col-lg-2">
-                <div class="client-thumb">
-                    <img src="{{asset("frontend/images/about/6.png")}}" alt="" class="img-fluid">
-                </div>
-            </div>
-            <div class="col-lg-2">
-                <div class="client-thumb">
-                    <img src="{{asset("frontend/images/about/3.png")}}" alt="" class="img-fluid">
-                </div>
-            </div>
-            <div class="col-lg-2">
-                <div class="client-thumb">
-                    <img src="{{asset("frontend/images/about/4.png")}}" alt="" class="img-fluid">
-                </div>
-            </div>
-            <div class="col-lg-2">
-                <div class="client-thumb">
-                    <img src="{{asset("frontend/images/about/5.png")}}" alt="" class="img-fluid">
-                </div>
-            </div>
-            <div class="col-lg-2">
-                <div class="client-thumb">
-                    <img src="{{asset("frontend/images/about/6.png")}}" alt="" class="img-fluid">
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+{{--    <div class="container">--}}
+{{--        <div class="row clients-logo">--}}
+{{--            <div class="col-lg-2">--}}
+{{--                <div class="client-thumb">--}}
+{{--                    <img src="{{asset("frontend/images/about/1.png")}}" alt="" class="img-fluid">--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="col-lg-2">--}}
+{{--                <div class="client-thumb">--}}
+{{--                    <img src="{{asset("frontend/images/about/2.png")}}" alt="" class="img-fluid">--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="col-lg-2">--}}
+{{--                <div class="client-thumb">--}}
+{{--                    <img src="{{asset("frontend/images/about/3.png")}}" alt="" class="img-fluid">--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="col-lg-2">--}}
+{{--                <div class="client-thumb">--}}
+{{--                    <img src="{{asset("frontend/images/about/4.png")}}" alt="" class="img-fluid">--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="col-lg-2">--}}
+{{--                <div class="client-thumb">--}}
+{{--                    <img src="{{asset("frontend/images/about/5.png")}}" alt="" class="img-fluid">--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="col-lg-2">--}}
+{{--                <div class="client-thumb">--}}
+{{--                    <img src="{{asset("frontend/images/about/6.png")}}" alt="" class="img-fluid">--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="col-lg-2">--}}
+{{--                <div class="client-thumb">--}}
+{{--                    <img src="{{asset("frontend/images/about/3.png")}}" alt="" class="img-fluid">--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="col-lg-2">--}}
+{{--                <div class="client-thumb">--}}
+{{--                    <img src="{{asset("frontend/images/about/4.png")}}" alt="" class="img-fluid">--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="col-lg-2">--}}
+{{--                <div class="client-thumb">--}}
+{{--                    <img src="{{asset("frontend/images/about/5.png")}}" alt="" class="img-fluid">--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="col-lg-2">--}}
+{{--                <div class="client-thumb">--}}
+{{--                    <img src="{{asset("frontend/images/about/6.png")}}" alt="" class="img-fluid">--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
+{{--</section>--}}
 @endsection
 
 @section('scripts')
@@ -427,6 +428,7 @@ s
     <script>
         $("#kt_datepicker_10").flatpickr({
             enableTime: true,
+            minDate: "today",
             dateFormat: "Y-m-d H:i",
         });
     </script>

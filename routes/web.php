@@ -125,3 +125,19 @@ Route::get('send-mail', function () {
 Route::fallback(function() {
     return redirect()->route('frontend.home');
 });
+
+Route::get('/optimize', function () {
+    Artisan::call('optimize');
+    return 'Application optimized!';
+});
+
+Route::get('/routeclear', function () {
+    Artisan::call('route:clear');
+    Artisan::call('route:cache');
+    Artisan::call('view:clear');
+    Artisan::call('view:cache');
+//    Artisan::call('migrate --path=/database/migrations/2022_07_19_064703_create_upload_images_table.php');
+    $mytime = Carbon\Carbon::now();
+    echo $mytime->toDateTimeString();
+    return 'Application route cleared!';
+});

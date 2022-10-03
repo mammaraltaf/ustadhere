@@ -276,6 +276,11 @@
                 <br>
                 <tr class="order-date">
                     <th>Order Date/Time:</th>
+                    <td>{{$appointment->appointmentDateTime ?? ''}}</td>
+                </tr>
+                <br>
+                <tr class="order-date">
+                    <th>Order Completed Date/Time:</th>
                     <td>{{$invoice->invoiceDateTime ?? ''}}</td>
                 </tr>
                 <tr class="payment-method">
@@ -330,5 +335,11 @@
     </tr>
     </tfoot>
 </table>
+<footer>
+    <div id="footer">
+        <img style="align-items: center; width:120px; height:15px;" alt="Ustadhere" src="{{asset('assets/logo/logo.png')}}"  /><br>
+        <p>www.ustadhere.com  |  0347-5055405  |  Islamabad / Rawalpindi</p>
+    </div>
+</footer>
 </body>
 </html>

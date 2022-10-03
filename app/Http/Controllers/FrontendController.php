@@ -33,14 +33,32 @@ class FrontendController extends Controller
     }
 
     public function appointmentPost(Request $request){
-        $val = (new Appointment)->appointmentStore($request);
-        if (isset($val)) {
-            $details = $val;
-            Mail::to('rj.mrauf@gmail.com')->send(new appointmentCreated($details));
-            return redirect()->back()->with('success','Appointment Created Successfully! We will contact you as soon as possible. If you are in hurry please call at 0347-5055405.');
-        }
-        else{
+//        $details = (new Appointment)->appointmentStore($request);
+        try {
+            $checkAppointmentExists = Appointment::where('appointmentDateTime', $request->dateTime)->first();
+            if ($checkAppointmentExists) {
+                return redirect()->back()->with('error', 'Appointment already exists on this time. Please choose another appointment time.');
+            }
+            $appointment = Appointment::Create([
+                'name' => $request->name ?? null,
+                'phone' => $request->phone ?? null,
+                'email' => $request->email ?? null,
+                'address' => $request->address ?? null,
+                'appointmentDateTime' => $request->dateTime ?? null,
+                'appointmentDetail' => $request->message ?? null,
+                'status' => 0,
+                'category_id' => $request->category ?? null,
+                'service_id' => $request->service ?? null,
+            ]);
+//            dd($appointment);
+            if (isset($appointment)) {
+            Mail::to('rj.mrauf@gmail.com')->send(new appointmentCreated($appointment));
+//                Mail::to('mammaraltaf@gmail.com')->send(new appointmentCreated($appointment));
+                return redirect()->back()->with('success','Appointment Created Successfully! We will contact you as soon as possible. If you are in hurry please call at 0347-5055405.');
+            }
             return redirect()->back()->with('error','There was an error creating the appointment!');
+        } catch (\Throwable $th) {
+            return $th->getMessage();
         }
     }
 
