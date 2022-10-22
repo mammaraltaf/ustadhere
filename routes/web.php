@@ -33,6 +33,8 @@ Route::get('/', function () {
     return view('frontend.index',compact('services','categories','reviews'));
 })->name('frontend.home');
 
+Route::get('registerProvider', [FrontendController::class, 'registerProvider'])->name('registerProvider');
+
 Route::get('/about',[FrontendController::class,'about'])->name('frontend.about');
 Route::get('/testimonials',[FrontendController::class,'testimonials'])->name('frontend.testimonials');
 Route::get('/contact',[FrontendController::class,'contact'])->name('frontend.contact');
@@ -103,7 +105,7 @@ Route::get('/login', function () {
 })->name('admin.login');
 
 Auth::routes([
-    'register' => false, // Registration Routes...
+//    'register' => false, // Registration Routes...
     'reset' => false, // Password Reset Routes...
     'verify' => false, // Email Verification Routes...
 ]);
@@ -127,15 +129,15 @@ Route::fallback(function() {
 });
 
 Route::get('/optimize', function () {
-    Artisan::call('optimize');
+    \Artisan::call('optimize');
     return 'Application optimized!';
 });
 
 Route::get('/routeclear', function () {
-    Artisan::call('route:clear');
-    Artisan::call('route:cache');
-    Artisan::call('view:clear');
-    Artisan::call('view:cache');
+    \Artisan::call('route:clear');
+    \Artisan::call('route:cache');
+    \Artisan::call('view:clear');
+    \Artisan::call('view:cache');
 //    Artisan::call('migrate --path=/database/migrations/2022_07_19_064703_create_upload_images_table.php');
     $mytime = Carbon\Carbon::now();
     echo $mytime->toDateTimeString();

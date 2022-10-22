@@ -235,7 +235,7 @@ s
             </div>
             <div class="col-lg-6 col-md-10 ">
                 <div class="appoinment-wrap mt-5 mt-lg-0">
-                    <h2 class="mb-2 title-color">Book appoinment</h2>
+                    <h2 class="mb-2 title-color">Book appointment</h2>
 {{--                    <p class="mb-4">Mollitia dicta commodi est recusandae iste, natus eum asperiores corrupti qui velit . Iste dolorum atque similique praesentium soluta.</p>--}}
                     <div class="form-group">
                         <div class="row">

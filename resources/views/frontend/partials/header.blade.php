@@ -34,7 +34,7 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="{{route('frontend.home')}}">Home</a>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="{{route('frontend.about')}}">About</a></li>
+{{--                    <li class="nav-item"><a class="nav-link" href="{{route('frontend.about')}}">About</a></li>--}}
                     <li class="nav-item"><a class="nav-link" href="{{route('frontend.appointment')}}">Appointment Form</a></li>
                     @php
                         $services = \App\Models\Service::all();
@@ -66,6 +66,8 @@
 {{--                        </ul>--}}
 {{--                    </li>--}}
                     <li class="nav-item"><a class="nav-link" href="{{route('frontend.contact')}}">Contact</a></li>
+                    <li class="nav-item ml-2"><a class="btn btn-warning" href="{{route('login')}}">Login</a></li>
+{{--                    <li class="nav-item ml-2"><a class="btn btn-warning" style="white-space: nowrap;" href="{{route('registerProvider')}}">Register Technician</a></li>--}}
                 </ul>
             </div>
         </div>

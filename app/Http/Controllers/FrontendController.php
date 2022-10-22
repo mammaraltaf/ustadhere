@@ -66,4 +66,8 @@ class FrontendController extends Controller
         (new Contact())->contactStore($request);
         return redirect()->back()->with('success','Your message was sent successfully.');
     }
+
+    public function registerProvider(){
+        return view('frontend.registerProvider');
+    }
 }
