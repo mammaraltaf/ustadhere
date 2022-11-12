@@ -46,6 +46,12 @@
                                     <input type="text" name="service_name"  placeholder="Enter Service Name" class="form-control input-lg" required>
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label class="control-label">Enter Price</label>
+                                <div>
+                                    <input type="integer" name="service_price"  placeholder="Enter Price" class="form-control input-lg" required>
+                                </div>
+                            </div>
 
                             <div class="form-group">
                                 <div>
@@ -87,6 +93,13 @@
                             </div>
 
                             <div class="form-group">
+                                <label class="control-label">Enter Price</label>
+                                <div>
+                                    <input type="text" name="service_price"  id="service_price" placeholder="Enter Service Price" class="form-control input-lg" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
                                 <div>
                                     <button type="submit" class="btn btn-success">Update Service</button>
                                 </div>
@@ -104,6 +117,7 @@
                 <tr>
                     <th>Category</th>
                     <th>Offered Service Name</th>
+                    <th>Price</th>
                     <th>Action</th>
                 </tr>
                 </thead>
@@ -115,6 +129,7 @@
                     <tr>
                         <td>{{$category->category_name}}</td>
                         <td>{{$service->service_name}}</td>
+                        <td>{{$service->service_price}}</td>
 
                         <td>
                             <a href="{{url('admin/edit-service',$service->id)}}" id="serviceEdit" class="btn btn-primary btn-sm"
@@ -128,8 +143,9 @@
                 </tbody>
                 <tfoot>
                 <tr>
-                    <th>Schedule Date Time</th>
-                    <th>Status</th>
+                    <th>Category</th>
+                    <th>Offered Service Name</th>
+                    <th>Price</th>
                     <th>Action</th>
                 </tr>
                 </tfoot>
@@ -195,6 +211,7 @@
                     success:function (response){
                         console.log(response);
                         $('#service_name').val(response.service_name);
+                        $('#service_price').val(response.service_price);
                         $('#categoryDropdownEdit').prop('selectedIndex', response.category_id);
                         $('#serviceFormEdit').attr('action',"{{url('/admin/edit-service/')}}"+'/'+service_id);
                     }

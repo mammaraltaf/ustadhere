@@ -20,6 +20,7 @@ class Service extends Model
         try {
             $service = Service::firstOrCreate([
                 'service_name' => $request->service_name ?? null,
+                'service_price'=>$request->service_price ?? null,
                 'category_id' => $request->category ?? null,
             ]);
         } catch (\Throwable $th) {
@@ -33,6 +34,7 @@ class Service extends Model
             $ser = Service::find($id);
             $service= Service::where('id',$ser->id)->update([
                 'category_id'=> isset($request->category ) ? $request->category  : null,
+                'service_price'=> isset($request->service_price ) ? $request->service_price  : null,
                 'service_name'=> isset($request->service_name) ? $request->service_name : null,
             ]);
             return $service;
