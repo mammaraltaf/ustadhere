@@ -76,8 +76,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/admin/edit-review/{id}', [AdminController::class,'updateReview'])->name('admin.updateReview');
     Route::post('/admin/delete-review', [AdminController::class,'destroyReview'])->name('admin.destroyReview');
 
-
-
     /*Admin Contact*/
     Route::get('/admin/contact',[AdminController::class,'contact'])->name('admin.contact');
 

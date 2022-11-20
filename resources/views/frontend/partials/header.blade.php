@@ -66,7 +66,7 @@
 {{--                        </ul>--}}
 {{--                    </li>--}}
                     <li class="nav-item"><a class="nav-link" href="{{route('frontend.contact')}}">Contact</a></li>
-                    <li class="nav-item ml-2"><a class="btn btn-warning" href="{{route('login')}}">Sign Up</a></li>
+                    <li class="nav-item ml-2"><a class="btn btn-warning" href="{{route('login')}}">Sign up as provider</a></li>
 {{--                    <li class="nav-item ml-2"><a class="btn btn-warning" style="white-space: nowrap;" href="{{route('registerProvider')}}">Register Technician</a></li>--}}
                 </ul>
             </div>

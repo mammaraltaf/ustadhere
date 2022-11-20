@@ -42,6 +42,11 @@
                             $category = \App\Models\Category::where('id',$service->category_id)->first();
                             @endphp
 						<p class="mb-4">{{$category->category_name ?? ''}}</p>
+
+                        @isset($service->service_price)
+                        <h1>Rs. {{$service->service_price ?? ''}}</h1>
+                        @endisset
+
 					</div>
 				</div>
 			</div>

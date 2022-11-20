@@ -151,7 +151,7 @@
                                 $('#service').empty();
                                 $('#service').append('<option hidden>Choose Service</option>');
                                 $.each(data, function(key, service){
-                                    $('select[name="service"]').append('<option value="'+ service.id +'">' + service.service_name+ '</option>');
+                                    $('select[name="service"]').append('<option value="'+ service.id +'">' + service.service_name+ ' - RS. ' +service.service_price +'</option>');
                                 });
                             }else{
                                 $('#course').empty();
