@@ -295,12 +295,24 @@ s
                                 </div>
                             </div>
                         </div>
+
                         <div class="form-group-2 mb-4">
                             <div class="form-group">
                                 <label for="" class="form-label">Address</label>
                                 <input name="address" id="address" type="text" class="form-control" placeholder="Enter Address" required>
                             </div>
                         </div>
+
+                        <div class="form-group-2 mb-4">
+                            <div class="form-group">
+                                <label for="" class="form-label">City</label>
+                                <select class="form-control" id="city" name="city">
+                                    <option value="Islamabad">Islamabad</option>
+                                    <option value="Rawalpindi">Rawalpindi</option>
+                                </select>
+                            </div>
+                        </div>
+
                         <div class="form-group-2 mb-4">
                             <label for="" class="form-label">Detail</label>
                             <textarea name="message" id="message" class="form-control" rows="6" placeholder="Your Message"></textarea>
@@ -448,7 +460,7 @@ s
                                 $('#service').empty();
                                 $('#service').append('<option hidden>Choose Service</option>');
                                 $.each(data, function(key, service){
-                                    $('select[name="service"]').append('<option value="'+ service.id +'">' + service.service_name+ '</option>');
+                                    $('select[name="service"]').append('<option value="'+ service.id +'">' + service.service_name+ ' - RS. ' +service.service_price +'</option>');
                                 });
                             }else{
                                 $('#course').empty();

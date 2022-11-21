@@ -29,6 +29,7 @@
                     <th>Phone</th>
                     <th>Email</th>
                     <th>Address</th>
+                    <th>City</th>
                     <th>Appointment Date Time</th>
                     <th>Appointment Detail</th>
                     <th>Status</th>
@@ -48,6 +49,7 @@
                         <td>{{$appointment->phone}}</td>
                         <td>{{$appointment->email}}</td>
                         <td>{{$appointment->address}}</td>
+                        <td>{{$appointment->city}}</td>
                         <td>{{$appointment->appointmentDateTime}}</td>
                         <td>{{$appointment->appointmentDetail}}</td>
                         @if($appointment->status == 0)
@@ -77,6 +79,7 @@
                     <th>Phone</th>
                     <th>Email</th>
                     <th>Address</th>
+                    <th>City</th>
                     <th>Appointment Date Time</th>
                     <th>Appointment Detail</th>
                     <th>Status</th>

@@ -46,6 +46,7 @@ class FrontendController extends Controller
                 'phone' => $request->phone ?? null,
                 'email' => $request->email ?? null,
                 'address' => $request->address ?? null,
+                'city' => $request->city ?? null,
                 'appointmentDateTime' => $request->dateTime ?? null,
                 'appointmentDetail' => $request->message ?? null,
                 'status' => 0,

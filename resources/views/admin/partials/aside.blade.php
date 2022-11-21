@@ -87,6 +87,7 @@
                                 <span class="menu-title">Dashboard</span>
                             </a>
                         </div>
+
                     @endif
 
             </div>

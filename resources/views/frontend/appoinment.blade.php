@@ -108,6 +108,16 @@
                            <label for="" class="form-label">Address</label>
                            <input name="address" id="address" type="text" class="form-control" placeholder="Enter Complete Home/Office Address" required>
                    </div>
+
+                       <div class="form-group-2 mb-4">
+                           <div class="form-group">
+                               <label for="" class="form-label">City</label>
+                               <select class="form-control" id="city" name="city">
+                                   <option value="Islamabad">Islamabad</option>
+                                   <option value="Rawalpindi">Rawalpindi</option>
+                               </select>
+                           </div>
+                       </div>
                    </div>
                     <div class="form-group-2 mb-4">
                         <label for="" class="form-label">Detail</label>
