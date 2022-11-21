@@ -19,6 +19,8 @@
 
     @yield('styles')
 </head>
+@include('admin.partials.sessionMessages')
+
 <!--end::Head-->
 <!--begin::Body-->
 <body id="kt_body" class="header-tablet-and-mobile-fixed aside-enabled">
@@ -29,6 +31,7 @@
     <div class="page d-flex flex-row flex-column-fluid">
         <!--begin::Aside-->s
         @include('admin.partials.aside')
+
         <!--end::Aside-->
         <!--begin::Wrapper-->
         <div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">

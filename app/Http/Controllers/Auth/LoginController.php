@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -37,4 +38,27 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+//    public function login(Request $request)
+//    {
+//        $input = $request->all();
+//        $request->validate([
+//            'email' => ['required','email'],
+//            'password' => ['required'],
+//        ]);
+//
+//        if(auth()->attempt(array('email' => $input['email'], 'password' => ($input['password']))))
+//        {
+//            if (auth()->user()->role == 1) {
+//                return redirect()->route('admin.index');
+//            }
+//
+//            return redirect()->route('user.index');
+//        }
+//
+//        return redirect()->route('login')
+//            ->withErrors(['error'=>'Incorrect username or password'])
+//            ->withInput($request->session()->put('data', $request->input()));
+//
+//    }
 }

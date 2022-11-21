@@ -19,6 +19,14 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script type="text/javascript">
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+    </script>
 </head>
 <body>
     <div id="app">
@@ -38,6 +46,7 @@
                     <ul class="navbar-nav me-auto">
 
                     </ul>
+                    @include('admin.partials.sessionMessages')
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">

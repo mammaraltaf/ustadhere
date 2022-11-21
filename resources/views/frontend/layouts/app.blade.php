@@ -4,7 +4,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="description" content="Orbitor,business,company,agency,modern,bootstrap4,tech,software">
     <meta name="author" content="UstadHere.com">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
+
     <title>Ustad Here- Electrician/Plumber at your doorstep</title>
 
     <!-- Favicon -->
@@ -62,6 +63,13 @@
 
 <script src="{{asset("frontend/js/script.js")}}"></script>
 <script src="{{asset("frontend/js/contact.js")}}"></script>
+<script type="text/javascript">
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+</script>
 @yield('scripts')
 </body>
 </html>

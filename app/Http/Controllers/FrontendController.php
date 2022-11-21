@@ -8,7 +8,9 @@ use App\Models\Contact;
 use App\Models\Review;
 use App\Models\Service;
 use App\Models\Category;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 
 class FrontendController extends Controller
@@ -69,5 +71,38 @@ class FrontendController extends Controller
 
     public function registerProvider(){
         return view('frontend.registerProvider');
+    }
+
+    public function registerProviderPost(Request $request){
+        try{
+            $input = $request->all();
+            $validation = \Validator::make($input, [
+                'name' => 'required|string|max:255',
+                'mobile'=> 'required|string|max:11',
+                'cnic' => 'required|string|max:15',
+                'city' => 'required|string|max:255',
+                'email' => 'required|string|email|max:255|unique:users',
+                'password' => 'required|string|min:8|confirmed',
+            ]);
+
+            if($validation->fails()){
+                return redirect()->back()->with('error', $validation->errors());
+            }
+
+            User::create([
+                'name' => $input['name'],
+                'mobile' => $input['mobile'],
+                'cnic' => $input['cnic'],
+                'city' => $input['city'],
+                'email' => $input['email'],
+                'password' => Hash::make($input['password']),
+                'role' => 0,
+            ]);
+
+            return redirect()->back()->with('success', 'User created successfully! You can only login once your account is approved by admin.');
+        }
+        catch(\Exception $e){
+            return redirect()->back()->with('error', $e->getMessage());
+        }
     }
 }

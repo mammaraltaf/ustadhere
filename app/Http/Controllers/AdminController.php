@@ -6,6 +6,7 @@ use App\Mail\orderCompleted;
 use App\Models\Appointment;
 use App\Models\Contact;
 use App\Models\Invoice;
+use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
 use App\Models\Category;
@@ -24,6 +25,30 @@ class AdminController extends Controller
         return view('index',compact('allAppointments','pendingAppointments','completedAppointments','contactFormData'));
     }
 
+    /*Users*/
+    public function users(){
+        $users = User::where('role',0)->get();
+        return view('admin.pages.users',compact('users'));
+    }
+
+    public function userStatus($id){
+        try{
+            $user = User::find($id);
+            if($user->status == 0){
+                $user->status = 1;
+                $user->save();
+                return redirect()->back()->with('success','User Activated Successfully');
+            }
+            $user->status = 0;
+            $user->save();
+            return redirect()->back()->with('success','User Deactivated Successfully');
+        }
+        catch (Exception $e){
+            return redirect()->back()->with('error',$e->getMessage());
+        }
+    }
+
+    /*Category*/
     public function category(){
         $categories = Category::all();
         return view('admin.pages.category',['categories'=>$categories]);

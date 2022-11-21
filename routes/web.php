@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserProviderController;
 use App\Models\Category;
 use App\Models\Service;
 use App\Models\Review;
@@ -33,7 +34,8 @@ Route::get('/', function () {
     return view('frontend.index',compact('services','categories','reviews'));
 })->name('frontend.home');
 
-Route::get('registerProvider', [FrontendController::class, 'registerProvider'])->name('registerProvider');
+Route::get('register', [FrontendController::class, 'registerProvider'])->name('registerProvider');
+Route::post('register', [FrontendController::class, 'registerProviderPost'])->name('registerProviderPost');
 
 Route::get('/about',[FrontendController::class,'about'])->name('frontend.about');
 Route::get('/testimonials',[FrontendController::class,'testimonials'])->name('frontend.testimonials');
@@ -52,47 +54,56 @@ Route::get('/admin', function () {
 });
 
 
-Route::group(['middleware' => 'auth'], function () {
-    Route::get('/admin/index',[AdminController::class,'index'])->name('admin.index');
+Route::group(['prefix' => 'admin','middleware' => 'auth','is_admin'], function () {
+    Route::get('/index',[AdminController::class,'index'])->name('admin.index');
     /*Admin.Category*/
-    Route::get('/admin/category',[AdminController::class,'category'])->name('admin.category');
-    Route::post('/admin/category',[AdminController::class,'categoryPost'])->name('admin.categoryPost');
-    Route::get('/admin/category-edit',[AdminController::class,'categoryEdit'])->name('admin.categoryEdit');
-    Route::get('/admin/edit-category/{id}', [AdminController::class,'editCategory'])->name('admin.editCategory');
-    Route::post('/admin/edit-category/{id}', [AdminController::class,'updateCategory'])->name('admin.updateCategory');
-    Route::post('/admin/delete-category', [AdminController::class,'destroyCategory'])->name('admin.destroyCategory');
+
+    Route::get('/users',[AdminController::class,'users'])->name('admin.users');
+    Route::get('/user/status/{id}',[AdminController::class,'userStatus'])->name('admin.user.status');
+
+
+    Route::get('/category',[AdminController::class,'category'])->name('admin.category');
+    Route::post('/category',[AdminController::class,'categoryPost'])->name('admin.categoryPost');
+    Route::get('/category-edit',[AdminController::class,'categoryEdit'])->name('admin.categoryEdit');
+    Route::get('/edit-category/{id}', [AdminController::class,'editCategory'])->name('admin.editCategory');
+    Route::post('/edit-category/{id}', [AdminController::class,'updateCategory'])->name('admin.updateCategory');
+    Route::post('/delete-category', [AdminController::class,'destroyCategory'])->name('admin.destroyCategory');
 
     /*Admin.Services*/
-    Route::get('/admin/services',[AdminController::class,'services'])->name('admin.services');
-    Route::post('/admin/services',[AdminController::class,'servicesPost'])->name('admin.servicesPost');
-    Route::get('/admin/edit-service/{id}', [AdminController::class,'editService'])->name('admin.editService');
-    Route::post('/admin/edit-service/{id}', [AdminController::class,'updateService'])->name('admin.updateService');
-    Route::post('/admin/delete-service', [AdminController::class,'destroyService'])->name('admin.destroyService');
+    Route::get('/services',[AdminController::class,'services'])->name('admin.services');
+    Route::post('/services',[AdminController::class,'servicesPost'])->name('admin.servicesPost');
+    Route::get('/edit-service/{id}', [AdminController::class,'editService'])->name('admin.editService');
+    Route::post('/edit-service/{id}', [AdminController::class,'updateService'])->name('admin.updateService');
+    Route::post('/delete-service', [AdminController::class,'destroyService'])->name('admin.destroyService');
 
     /*Admin.Reviews*/
-    Route::get('/admin/reviews',[AdminController::class,'reviews'])->name('admin.reviews');
-    Route::post('/admin/reviews',[AdminController::class,'reviewsPost'])->name('admin.reviewsPost');
-    Route::get('/admin/edit-review/{id}', [AdminController::class,'editReview'])->name('admin.editReview');
-    Route::post('/admin/edit-review/{id}', [AdminController::class,'updateReview'])->name('admin.updateReview');
-    Route::post('/admin/delete-review', [AdminController::class,'destroyReview'])->name('admin.destroyReview');
+    Route::get('/reviews',[AdminController::class,'reviews'])->name('admin.reviews');
+    Route::post('/reviews',[AdminController::class,'reviewsPost'])->name('admin.reviewsPost');
+    Route::get('/edit-review/{id}', [AdminController::class,'editReview'])->name('admin.editReview');
+    Route::post('/edit-review/{id}', [AdminController::class,'updateReview'])->name('admin.updateReview');
+    Route::post('/delete-review', [AdminController::class,'destroyReview'])->name('admin.destroyReview');
 
     /*Admin Contact*/
-    Route::get('/admin/contact',[AdminController::class,'contact'])->name('admin.contact');
+    Route::get('/contact',[AdminController::class,'contact'])->name('admin.contact');
 
     /*Admin.Appointments*/
-    Route::get('/admin/appointment',[AdminController::class,'appointment'])->name('admin.appointment');
+    Route::get('/appointment',[AdminController::class,'appointment'])->name('admin.appointment');
 
-    Route::post('/admin/invoice/{appointment_id}',[AdminController::class,'invoiceDetails'])->name('admin.invoiceDetails');
-    Route::get('/admin/get-data/{id}', [AdminController::class,'getData'])->name('admin.getData');
+    Route::post('/invoice/{appointment_id}',[AdminController::class,'invoiceDetails'])->name('admin.invoiceDetails');
+    Route::get('/get-data/{id}', [AdminController::class,'getData'])->name('admin.getData');
 
-    Route::get('/admin/downloadInvoice/{id}',[AdminController::class,'downloadInvoice'])->name('admin.downloadInvoice');
-    Route::get('/admin/sendEmail/{id}',[AdminController::class,'sendEmail'])->name('admin.sendEmail');
+    Route::get('/downloadInvoice/{id}',[AdminController::class,'downloadInvoice'])->name('admin.downloadInvoice');
+    Route::get('/sendEmail/{id}',[AdminController::class,'sendEmail'])->name('admin.sendEmail');
 
 
 //    Route::get('/admin',[AdminController::class,'index'])->name('admin.index');
 //    Route::get('/admin',[AdminController::class,'index'])->name('admin.index');
 });
 
+
+Route::group(['prefix' => 'user','middleware' => 'auth'], function () {
+    Route::get('/index', [UserProviderController::class, 'index'])->name('user.index');
+});
 
 Route::get('/services', function () {
     return view('frontend.service');
@@ -103,7 +114,7 @@ Route::get('/login', function () {
 })->name('admin.login');
 
 Auth::routes([
-//    'register' => false, // Registration Routes...
+    'register' => false, // Registration Routes...
     'reset' => false, // Password Reset Routes...
     'verify' => false, // Email Verification Routes...
 ]);

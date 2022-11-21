@@ -16,7 +16,7 @@
                     <!--begin::Info-->
                     <div class="flex-grow-1 me-2">
                         <!--begin::Username-->
-                        <a href="#" class="text-white text-hover-primary fs-6 fw-bold">Admin</a>
+                        <a href="#" class="text-white text-hover-primary fs-6 fw-bold">{{Auth::user()->name ?? 'User'}}</a>
                         <!--end::Username-->
                     </div>
                     <!--end::Info-->
@@ -39,9 +39,16 @@
             <!--begin::Menu-->
             <div class="menu menu-column menu-title-gray-800 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500" id="#kt_aside_menu" data-kt-menu="true">
                 <div class="menu-item">
+                    @if(Auth::user()->role == 1)
                     <div class="menu-item">
                         <a class="menu-link {{ Route::currentRouteNamed('admin.index') ? 'active' : '' }}" href="{{route('admin.index')}}" >
                             <span class="menu-title">Dashboard</span>
+                        </a>
+                    </div>
+
+                    <div class="menu-item">
+                        <a class="menu-link {{ Route::currentRouteNamed('admin.users') ? 'active' : '' }}" href="{{route('admin.users')}}" >
+                            <span class="menu-title">Manage Users</span>
                         </a>
                     </div>
 
@@ -74,6 +81,13 @@
                             <span class="menu-title">Contact Form Data</span>
                         </a>
                     </div>
+                    @else
+                        <div class="menu-item">
+                            <a class="menu-link {{ Route::currentRouteNamed('user.index') ? 'active' : '' }}" href="{{route('user.index')}}" >
+                                <span class="menu-title">Dashboard</span>
+                            </a>
+                        </div>
+                    @endif
 
             </div>
             <!--end::Menu-->
