@@ -15,7 +15,7 @@
                                 <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Full Name') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                    <input id="name" type="text" placeholder="Enter your full name" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
                                     @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -30,7 +30,7 @@
                                 <label for="mobile" class="col-md-4 col-form-label text-md-right">{{ __('Mobile Number') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="mobile" type="text" class="form-control @error('mobile') is-invalid @enderror" name="mobile" value="{{ old('mobile') }}" required autocomplete="mobile" autofocus>
+                                    <input id="mobile" placeholder="Enter your active mobile number" type="text" class="form-control @error('mobile') is-invalid @enderror" name="mobile" value="{{ old('mobile') }}" required autocomplete="mobile" autofocus>
 
                                     @error('mobile')
                                     <span class="invalid-feedback" role="alert">
@@ -45,7 +45,7 @@
                                 <label for="cnic" class="col-md-4 col-form-label text-md-right">{{ __('CNIC Number') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="cnic" type="text" class="form-control @error('cnic') is-invalid @enderror" name="cnic" value="{{ old('cnic') }}" required autocomplete="cnic" autofocus>
+                                    <input id="cnic" placeholder="Enter your cnic number" type="text" class="form-control @error('cnic') is-invalid @enderror" name="cnic" value="{{ old('cnic') }}" required autocomplete="cnic" autofocus>
 
                                     @error('cnic')
                                     <span class="invalid-feedback" role="alert">
@@ -65,6 +65,20 @@
                                         <option value="Rawalpindi">Rawalpindi</option>
                                     </select>
                                     @error('city')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <br>
+
+                            <div class="form-group row">
+                                <label for="city" class="col-md-4 col-form-label text-md-right">{{ __('Area Name') }}</label>
+
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control @error('area') is-invalid @enderror" placeholder="Area where you want to provide Service" name="area" value="{{ old('area') }}" required>
+                                    @error('area')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

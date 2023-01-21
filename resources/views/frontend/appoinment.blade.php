@@ -69,7 +69,7 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="" class="form-label">Select Service</label>
-                                <select class="form-control" name="service" id="service">
+                                <select class="multiselect-ui form-control" name="service" id="service"  multiple="multiple">
                                 </select>
                             </div>
                         </div>
@@ -135,8 +135,8 @@
 @endsection
 
 @section('scripts')
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+{{--    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>--}}
+{{--    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>--}}
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script>
         $("#kt_datepicker_10").flatpickr({
@@ -161,7 +161,9 @@
                                 $('#service').empty();
                                 $('#service').append('<option hidden>Choose Service</option>');
                                 $.each(data, function(key, service){
-                                    $('select[name="service"]').append('<option value="'+ service.id +'">' + service.service_name+ ' - RS. ' +service.service_price +'</option>');
+                                    $('select[name="service"]').append('<option value="'+ service.id +'">' + service.service_name+ ' - RS. ' +service.service_price +'</option>').multiselect({
+                                        includeSelectAllOption: true
+                                    });;
                                 });
                             }else{
                                 $('#course').empty();

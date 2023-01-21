@@ -77,11 +77,14 @@ class FrontendController extends Controller
     public function registerProviderPost(Request $request){
         try{
             $input = $request->all();
+//            dd($input);
+
             $validation = \Validator::make($input, [
                 'name' => 'required|string|max:255',
                 'mobile'=> 'required|string|max:11',
                 'cnic' => 'required|string|max:15',
                 'city' => 'required|string|max:255',
+                'area' => 'required|string|max:255',
                 'email' => 'required|string|email|max:255|unique:users',
                 'password' => 'required|string|min:8|confirmed',
             ]);
@@ -91,11 +94,12 @@ class FrontendController extends Controller
             }
 
             User::create([
-                'name' => $input['name'],
-                'mobile' => $input['mobile'],
-                'cnic' => $input['cnic'],
-                'city' => $input['city'],
-                'email' => $input['email'],
+                'name' => $input['name'] ?? '',
+                'mobile' => $input['mobile'] ?? '',
+                'cnic' => $input['cnic'] ?? '',
+                'area' => $input['area'] ?? '',
+                'city' => $input['city'] ?? '',
+                'email' => $input['email'] ?? '',
                 'password' => Hash::make($input['password']),
                 'role' => 0,
             ]);
