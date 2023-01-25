@@ -30,6 +30,7 @@
                     <th>Cnic</th>
                     <th>Email</th>
                     <th>City</th>
+                    <th>Area</th>
                     <th>Status</th>
                     <th>Action</th>
                 </tr>
@@ -42,6 +43,7 @@
                         <td>{{$user->cnic}}</td>
                         <td>{{$user->email}}</td>
                         <td>{{$user->city}}</td>
+                        <td>{{$user->area}}</td>
                         <td>
                             @if($user->status == 1)
                                 <span class="badge badge-success">Active</span>
