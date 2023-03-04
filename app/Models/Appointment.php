@@ -14,8 +14,7 @@ class Appointment extends Model
 
     protected $guarded = ['id'];
 
-    public function appointmentStore($request)
-    {
-
+    public function appointmentProvider(){
+        return $this->hasMany(AppointmentToProvider::class);
     }
 }

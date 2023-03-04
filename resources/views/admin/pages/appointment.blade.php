@@ -61,14 +61,53 @@
                         @endif
                         <td>
                             @if($appointment->status == 0)
-                            <a href="" class="btn btn-primary btn-sm" data-id="{{$appointment->id}}" id="completeAppointment"
-                               data-toggle="modal" data-target="#ModalEdit"><i class="fa-solid fa-check"></i></a>
+{{--                            <a href="" class="btn btn-primary btn-sm m-2" data-id="{{$appointment->id}}" id="completeAppointment"--}}
+{{--                               data-toggle="modal" data-target="#ModalEdit"><i class="fa-solid fa-check"></i></a>--}}
+
+                                <a href="" class="btn btn-primary btn-sm" data-id="{{$appointment->id}}" id="sendAppointmentToProvider"
+                                   data-toggle="modal" data-target="#ModalSendToProvider"><i class="fa-solid fa-check"></i></a>
+
                             @elseif($appointment->status == 1)
                                 <a href="{{route('admin.downloadInvoice',['id'=>$appointment->id])}}" class="btn btn-info btn-sm" data-id="{{$appointment->id}}"><i class="fa fa-download"></i></a>
                                 <a href="{{route('admin.sendEmail',['id'=>$appointment->id])}}" class="btn btn-success btn-sm" data-id="{{$appointment->id}}"><i class="fa fa-paper-plane"></i></a>
                             @endif
                         </td>
                     </tr>
+                    <div id="ModalSendToProvider" class="modal fade">
+                        <div class="modal-dialog modal-sm" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title">Send to Providers</h1>
+                                </div>
+                                <div class="modal-body">
+                                    <form id="sendToProvidersForm" method="POST" action="{{route('admin.sendToProviders', ['appointment_id' => $appointment->id])}}"
+                                          enctype="multipart/form-data">
+                                        @csrf
+                                        <div class="form-group">
+                                            @foreach($providers as $provider)
+                                                <div class="form-check">
+                                                    <input class="form-check-input" name="providerList[]" type="checkbox" value="{{$provider->id}}" id="flexCheckIndeterminate{{$provider->id}}">
+                                                    <label class="form-check-label" for="flexCheckIndeterminate{{$provider->id}}">
+                                                        {{$provider->name}} - ({{$provider->city}})
+                                                    </label>
+                                                </div>
+                                                <br>
+                                            @endforeach
+                                            <br>
+                                        </div>
+                                        <br>
+
+                                        <div class="form-group">
+                                            <div>
+                                                <button type="submit" class="btn btn-success">Send to Providers</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                    </div><!-- /.modal -->
+                    <!--end::Body-->
                 @endforeach
                 </tbody>
                 <tfoot>
@@ -96,7 +135,7 @@
                     <h1 class="modal-title">Generate Invoice</h1>
                 </div>
                 <div class="modal-body">
-                    <form id="invoiceForm" method="POST" action=""
+                    <form id="sendToProviders" method="POST" action=""
                           enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
@@ -176,6 +215,14 @@
         $(document).ready(function () {
             $('#appointmentTable').DataTable();
         });
+
+        {{--$('body').on('click', '#sendToProviders', function () {--}}
+        {{--    var appointment_id = $(this).data('id');--}}
+        {{--    alert(appointment_id);--}}
+        {{--    $('#sendToProvidersForm').attr('action',"{{url('/admin/send-to-providers/')}}"+'/'+appointment_id);--}}
+        {{--});--}}
+
+
         $('body').on('click', '#completeAppointment', function () {
             var appointment_id = $(this).data('id');
             $.ajax({

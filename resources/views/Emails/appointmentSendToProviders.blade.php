@@ -9,7 +9,6 @@
     <title>Thankyou!</title>
     <style type="text/css">
 
-
         @media only screen and (max-width: 600px){
             body{font-size:12px !important;}
             table{width: 1000px;}
@@ -32,17 +31,28 @@
                             </tr>
                             <tr style="float:left;width:100%;padding-bottom:20px;">
                                 <td style="float:left;width:100%;" align="center">
-                                    <h1 style="font-size: 40px;margin-top: 0px;margin-bottom: 10px;">ORDER COMPLETED</h1>
+                                    <h1 style="font-size: 40px;margin-top: 0px;margin-bottom: 10px;">Respond to Win the Appointment</h1>
                                 </td>
                             </tr>
                             <tr style="float:left;width:100%;padding-bottom:20px;">
                                 <td style="float:left;width:100%;" align="center">
-                                    <p style="line-height: 25px;font-size: 16px;margin-top: 0px;font-style: italic;"><strong>Hi {{$details->name ?? ''}}!, </strong> Thank you so much for using our service.</p>
+
+                                    <p style="line-height: 25px;font-size: 16px;margin-top: 0px;font-style: italic;"><strong>Hi Provider!,<br>
+                                        </strong> New Appointment Created! Please respond.</p> <br>
+
+
+
+                                    <p style="line-height: 25px;font-size: 16px;margin-top: 0px;font-style: italic;"><strong>Appointment Details:
+                                    @isset($details->name)
+                                        <p style="line-height: 25px;font-size: 16px;margin-top: 0px;font-style: italic;"><strong>Name :</strong>{{$details->name ?? ''}}</p>
+                                        @endisset
+
+                                        </strong></p>
                                 </td>
                             </tr>
                             <tr style="float:left;width:100%;padding-bottom:40px;">
                                 <td style="float:left;width:100%;" align="center">
-                                    <a style="background: #99ca3b;color: #fff;text-decoration: none;border-radius: 40px;padding: 10px 30px;font-size: 20px;font-weight: 600;" href="www.ustadhere.com">Visit Us</a>
+                                    <a style="background: #99ca3b;color: #fff;text-decoration: none;border-radius: 40px;padding: 10px 30px;font-size: 20px;font-weight: 600;" href="{{url('/login')}}">Login</a>
                                 </td>
                             </tr>
                             <tr style="float:left;width:100%;padding-bottom:20px;">

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\appointmentSendToProviders;
 use App\Mail\orderCompleted;
 use App\Models\Appointment;
+use App\Models\AppointmentToProvider;
 use App\Models\Contact;
 use App\Models\Invoice;
 use App\Models\User;
@@ -158,7 +160,8 @@ class AdminController extends Controller
     public function appointment(){
         try{
         $appointments = Appointment::all();
-        return view('admin.pages.appointment',['appointments'=>$appointments]);
+        $providers = User::where('role',0)->where('status',1)->get();
+        return view('admin.pages.appointment',['appointments'=>$appointments,'providers'=>$providers]);
     }
         catch(Exception $e){
             return $e->getMessage();
@@ -219,6 +222,36 @@ class AdminController extends Controller
     public function contact(){
         $contacts = Contact::all();
         return view('admin.pages.contact',['contacts'=>$contacts]);
+    }
+
+
+    public function sendToProviders(Request $request,$id){
+//        dd('inside provider send',$request->all(),$id);
+        try{
+            $appointmentId = $id;
+            $appointment = Appointment::findOrfail($appointmentId);
+            $selectedProviders = $request->providerList;
+            foreach ($selectedProviders as $selProvider){
+                $provider = User::find($selProvider);
+                $details = $appointment;
+                $details = AppointmentToProvider::Create([
+                    'appointment_id'=>$appointmentId,
+                    'provider_id'=>$selProvider,
+                    'is_accepted'=>0,
+                    'status'=>'0',
+                ]);
+
+//                dd($details,$provider->email);
+                $message = new appointmentSendToProviders($details);
+                Mail::to($provider->email)->send($message);
+            }
+//            dd($selectedProviders);
+
+            return redirect()->back()->with('success','Email sent successfully!');
+        }
+        catch(Exception $e){
+            return $e->getMessage();
+        }
     }
 
 

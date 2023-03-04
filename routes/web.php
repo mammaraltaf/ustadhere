@@ -90,6 +90,7 @@ Route::group(['prefix' => 'admin','middleware' => 'auth','is_admin'], function (
     Route::get('/appointment',[AdminController::class,'appointment'])->name('admin.appointment');
 
     Route::post('/invoice/{appointment_id}',[AdminController::class,'invoiceDetails'])->name('admin.invoiceDetails');
+    Route::post('/send-to-providers/{appointment_id}',[AdminController::class,'sendToProviders'])->name('admin.sendToProviders');
     Route::get('/get-data/{id}', [AdminController::class,'getData'])->name('admin.getData');
 
     Route::get('/downloadInvoice/{id}',[AdminController::class,'downloadInvoice'])->name('admin.downloadInvoice');

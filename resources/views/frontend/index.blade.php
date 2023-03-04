@@ -221,111 +221,111 @@ s
         </div>
     </div>
 </section>
-<section class="section appoinment">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-6 ">
-                <div class="appoinment-content">
+{{--<section class="section appoinment">--}}
+{{--    <div class="container">--}}
+{{--        <div class="row align-items-center">--}}
+{{--            <div class="col-lg-6 ">--}}
+{{--                <div class="appoinment-content">--}}
 {{--                    <img src="{{asset("assets/images/gImage_croped.png")}}" alt="" class="img-fluid">--}}
-                    <img src="{{asset("assets/moreImages/right.jpg")}}" alt="" class="img-fluid">
-                    <div class="emergency">
-                        <h2 class="text-lg"><i class="icofont-phone-circle text-lg"></i><a style="color:white" href="tel:03475055405">0347 5055405</a></h2>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-10 ">
-                <div class="appoinment-wrap mt-5 mt-lg-0">
-                    <h2 class="mb-2 title-color">Book appointment</h2>
+{{--                    <img src="{{asset("assets/moreImages/right.jpg")}}" alt="" class="img-fluid">--}}
+{{--                    <div class="emergency">--}}
+{{--                        <h2 class="text-lg"><i class="icofont-phone-circle text-lg"></i><a style="color:white" href="tel:03475055405">0347 5055405</a></h2>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="col-lg-6 col-md-10 ">--}}
+{{--                <div class="appoinment-wrap mt-5 mt-lg-0">--}}
+{{--                    <h2 class="mb-2 title-color">Book appointment</h2>--}}
 {{--                    <p class="mb-4">Mollitia dicta commodi est recusandae iste, natus eum asperiores corrupti qui velit . Iste dolorum atque similique praesentium soluta.</p>--}}
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-md-12">
-                                @include('admin.partials.sessionMessages')
-                            </div>
-                        </div>
-                    </div>
-                    <form id="appoinment-form" class="appoinment-form" method="POST" action="{{route('frontend.appointment.post')}}">
-                        @csrf
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label for="" class="form-label">Select Category</label>
-                                    <select class="form-control" name="category" id="category">
-                                        <option>Choose Service Category</option>
-                                        @foreach($categories as $category)
-                                            <option id="{{$category->id}}" value="{{$category->id}}">{{$category->category_name}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label for="" class="form-label">Select Service</label>
-                                    <select class="form-control" name="service" id="service">
-                                    </select>
-                                </div>
-                            </div>
+{{--                    <div class="form-group">--}}
+{{--                        <div class="row">--}}
+{{--                            <div class="col-md-12">--}}
+{{--                                @include('admin.partials.sessionMessages')--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <form id="appoinment-form" class="appoinment-form" method="POST" action="{{route('frontend.appointment.post')}}">--}}
+{{--                        @csrf--}}
+{{--                        <div class="row">--}}
+{{--                            <div class="col-lg-6">--}}
+{{--                                <div class="form-group">--}}
+{{--                                    <label for="" class="form-label">Select Category</label>--}}
+{{--                                    <select class="form-control" name="category" id="category">--}}
+{{--                                        <option>Choose Service Category</option>--}}
+{{--                                        @foreach($categories as $category)--}}
+{{--                                            <option id="{{$category->id}}" value="{{$category->id}}">{{$category->category_name}}</option>--}}
+{{--                                        @endforeach--}}
+{{--                                    </select>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                            <div class="col-lg-6">--}}
+{{--                                <div class="form-group">--}}
+{{--                                    <label for="" class="form-label">Select Service</label>--}}
+{{--                                    <select class="form-control" name="service" id="service">--}}
+{{--                                    </select>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
 
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label for="" class="form-label">Appointment Date/Time</label>
-                                    <input class="form-control form-control-solid"
-                                           name="dateTime" readable placeholder="Pick date/time"
-                                           id="kt_datepicker_10"/>
-                                </div>
-                            </div>
+{{--                            <div class="col-lg-6">--}}
+{{--                                <div class="form-group">--}}
+{{--                                    <label for="" class="form-label">Appointment Date/Time</label>--}}
+{{--                                    <input class="form-control form-control-solid"--}}
+{{--                                           name="dateTime" readable placeholder="Pick date/time"--}}
+{{--                                           id="kt_datepicker_10"/>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
 
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label for="" class="form-label">Email</label>
-                                    <input name="email" id="email" type="email" class="form-control" placeholder="Email">
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label for="" class="form-label">Full Name</label>
-                                    <input name="name" id="name" type="text" class="form-control" placeholder="Full Name">
-                                </div>
-                            </div>
+{{--                            <div class="col-lg-6">--}}
+{{--                                <div class="form-group">--}}
+{{--                                    <label for="" class="form-label">Email</label>--}}
+{{--                                    <input name="email" id="email" type="email" class="form-control" placeholder="Email">--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                            <div class="col-lg-6">--}}
+{{--                                <div class="form-group">--}}
+{{--                                    <label for="" class="form-label">Full Name</label>--}}
+{{--                                    <input name="name" id="name" type="text" class="form-control" placeholder="Full Name">--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
 
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label for="" class="form-label">Phone</label>
-                                    <input name="phone" id="phone" type="text" class="form-control" placeholder="Phone Number">
-                                </div>
-                            </div>
-                        </div>
+{{--                            <div class="col-lg-6">--}}
+{{--                                <div class="form-group">--}}
+{{--                                    <label for="" class="form-label">Phone</label>--}}
+{{--                                    <input name="phone" id="phone" type="text" class="form-control" placeholder="Phone Number">--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
 
-                        <div class="form-group-2 mb-4">
-                            <div class="form-group">
-                                <label for="" class="form-label">Address</label>
-                                <input name="address" id="address" type="text" class="form-control" placeholder="Enter Address" required>
-                            </div>
-                        </div>
+{{--                        <div class="form-group-2 mb-4">--}}
+{{--                            <div class="form-group">--}}
+{{--                                <label for="" class="form-label">Address</label>--}}
+{{--                                <input name="address" id="address" type="text" class="form-control" placeholder="Enter Address" required>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
 
-                        <div class="form-group-2 mb-4">
-                            <div class="form-group">
-                                <label for="" class="form-label">City</label>
-                                <select class="form-control" id="city" name="city">
-                                    <option value="Islamabad">Islamabad</option>
-                                    <option value="Rawalpindi">Rawalpindi</option>
-                                </select>
-                            </div>
-                        </div>
+{{--                        <div class="form-group-2 mb-4">--}}
+{{--                            <div class="form-group">--}}
+{{--                                <label for="" class="form-label">City</label>--}}
+{{--                                <select class="form-control" id="city" name="city">--}}
+{{--                                    <option value="Islamabad">Islamabad</option>--}}
+{{--                                    <option value="Rawalpindi">Rawalpindi</option>--}}
+{{--                                </select>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
 
-                        <div class="form-group-2 mb-4">
-                            <label for="" class="form-label">Detail</label>
-                            <textarea name="message" id="message" class="form-control" rows="6" placeholder="Your Message"></textarea>
-                        </div>
+{{--                        <div class="form-group-2 mb-4">--}}
+{{--                            <label for="" class="form-label">Detail</label>--}}
+{{--                            <textarea name="message" id="message" class="form-control" rows="6" placeholder="Your Message"></textarea>--}}
+{{--                        </div>--}}
 
-                        <input class="btn btn-main btn-round-full" type="submit" value="Make Appoinment" ></input>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-</section>
+{{--                        <input class="btn btn-main btn-round-full" type="submit" value="Make Appoinment" ></input>--}}
+{{--                    </form>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
+{{--    </div>--}}
+{{--</section>--}}
 <section class="section testimonial-2 gray-bg">
     <div class="container">
         <div class="row justify-content-center">

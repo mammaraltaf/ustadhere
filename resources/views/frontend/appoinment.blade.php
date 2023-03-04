@@ -148,7 +148,9 @@
     <script>
         $(document).ready(function() {
             $('#category').on('change', function() {
+                $('select[name="service"]').empty();
                 var categoryID = $(this).val();
+                var optionsToAdd = '';
                 if(categoryID) {
                     $.ajax({
                         url: '/getService/'+categoryID,
@@ -159,19 +161,24 @@
                         {
                             if(data){
                                 $('#service').empty();
-                                $('#service').append('<option hidden>Choose Service</option>');
+                                // $('#service').append('<option hidden>Choose Service</option>');
                                 $.each(data, function(key, service){
-                                    $('select[name="service"]').append('<option value="'+ service.id +'">' + service.service_name+ ' - RS. ' +service.service_price +'</option>').multiselect({
-                                        includeSelectAllOption: true
-                                    });;
+                                    optionsToAdd += '<option value="'+ service.id +'">' + service.service_name+ ' - RS. ' +service.service_price +'</option>';
+                                    // console.log(service.service_name);
+                                    // $('select[name="service"]').append('<option value="'+ service.id +'">' + service.service_name+ ' - RS. ' +service.service_price +'</option>').multiselect({
+                                    //     includeSelectAllOption: true
+                                    // }); //end of append
+                                });
+                                $('select[name="service"]').append(optionsToAdd).multiselect({
+                                    includeSelectAllOption: true
                                 });
                             }else{
-                                $('#course').empty();
+                                $('select[name="service"]').empty();
                             }
                         }
                     });
                 }else{
-                    $('#course').empty();
+                    $('select[name="service"]').empty();
                 }
             });
             var service = $('#service').find(":selected").text();
