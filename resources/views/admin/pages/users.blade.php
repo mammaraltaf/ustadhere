@@ -66,6 +66,7 @@
                     <th>Cnic</th>
                     <th>Email</th>
                     <th>City</th>
+                    <th>Area</th>
                     <th>Status</th>
                     <th>Action</th>
                 </tr>

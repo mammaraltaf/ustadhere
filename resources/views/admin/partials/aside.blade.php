@@ -81,6 +81,7 @@
                             <span class="menu-title">Contact Form Data</span>
                         </a>
                     </div>
+
                     @else
                         <div class="menu-item">
                             <a class="menu-link {{ Route::currentRouteNamed('user.index') ? 'active' : '' }}" href="{{route('user.index')}}" >

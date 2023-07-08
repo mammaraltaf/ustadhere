@@ -104,6 +104,7 @@ Route::group(['prefix' => 'admin','middleware' => 'auth','is_admin'], function (
 
 Route::group(['prefix' => 'user','middleware' => 'auth'], function () {
     Route::get('/index', [UserProviderController::class, 'index'])->name('user.index');
+    Route::post('/accept-appointment/{id}', [UserProviderController::class, 'acceptAppointment'])->name('user.acceptAppointment');
 });
 
 Route::get('/services', function () {
@@ -144,12 +145,23 @@ Route::get('/optimize', function () {
 });
 
 Route::get('/routeclear', function () {
-    \Artisan::call('route:clear');
     \Artisan::call('route:cache');
-    \Artisan::call('view:clear');
+    \Artisan::call('route:clear');
     \Artisan::call('view:cache');
+    \Artisan::call('view:clear');
 //    Artisan::call('migrate --path=/database/migrations/2022_07_19_064703_create_upload_images_table.php');
     $mytime = Carbon\Carbon::now();
     echo $mytime->toDateTimeString();
     return 'Application route cleared!';
+});
+
+Route::get('/generate-key', function () {
+    Artisan::call('key:generate');
+    return 'Key generated successfully!';
+});
+
+
+Route::get('/config-clear', function () {
+    Artisan::call('config:clear');
+    return 'Config Clear successfully!';
 });

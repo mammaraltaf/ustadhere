@@ -24,50 +24,40 @@
             <table id="categoryTable" name="categoryTable" class="ui celled table allTable" style="width:100%">
                 <thead>
                 <tr>
+                    <th>Category</th>
                     <th>Service</th>
-{{--                    <th>Name</th>--}}
-{{--                    <th>Phone</th>--}}
-{{--                    <th>Email</th>--}}
-                    <th>Address</th>
                     <th>City</th>
                     <th>Appointment Date Time</th>
                     <th>Appointment Detail</th>
-{{--                    <th>Action</th>--}}
+                    <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($requests as $request)
+                @foreach($appointmentProvider as $appointmentprov)
                     @php
-                        $category = \App\Models\Category::where('id',$request->category_id)->first();
-                        $service = \App\Models\Service::where('id',$request->service_id)->first();
-                    @endphp
+                        $category = \App\Models\Category::where('id',$appointmentprov->appointment->category_id)->first();
+                        $service = \App\Models\Service::where('id',intval($appointmentprov->appointment->service_id))->first();
+                        @endphp
                     <tr>
+                        <td>{{$category->category_name ?? ''}}</td>
                         <td>{{$service->service_name ?? ''}}</td>
-{{--                        <td>{{$request->name}}</td>--}}
-{{--                        <td>{{$request->phone}}</td>--}}
-{{--                        <td>{{$request->email}}</td>--}}
-                        <td>{{$request->address}}</td>
-                        <td>{{$request->city}}</td>
-                        <td>{{$request->appointmentDateTime}}</td>
-                        <td>{{$request->appointmentDetail}}</td>
-
-{{--                        <td><a href="" class="btn btn-primary btn-sm" id="categoryEdit"  data-toggle="modal" data-target="#ModalEdit" data-id="{{$request->id}}">Edit</a>--}}
-{{--                            <a id="deleteBtn" data-toggle="modal" data-target=".modal1" data-id="{{$request->id}}"--}}
-{{--                               class="btn btn-danger delete_btn btn-sm">Delete</a></td>--}}
+                        <td>{{$appointmentprov->appointment->city}}</td>
+                        <td>{{\Carbon\Carbon::parse($appointmentprov->appointment->appointmentDateTime)->format("l, F j, Y, g:i A")}}</td>
+                        <td>{{$appointmentprov->appointment->appointmentDetail}}</td>
+                        <td>
+                            <a id="deleteBtn" data-toggle="modal" data-target=".modal1" data-id="{{$appointmentprov->id}}"
+                               class="btn btn-success delete_btn btn-sm">Accept</a></td>
                     </tr>
                 @endforeach
                 </tbody>
                 <tfoot>
                 <tr>
+                    <th>Category</th>
                     <th>Service</th>
-{{--                    <th>Name</th>--}}
-{{--                    <th>Phone</th>--}}
-{{--                    <th>Email</th>--}}
-                    <th>Address</th>
                     <th>City</th>
                     <th>Appointment Date Time</th>
                     <th>Appointment Detail</th>
-{{--                    <th>Action</th>--}}
+                    <th>Action</th>
                 </tr>
                 </tfoot>
             </table>
@@ -81,21 +71,21 @@
                 {{--                  'method' => 'post',--}}
                 {{--                  'role' => 'form' )) !!}--}}
 
-                <form method="post" action="{{route('admin.destroyCategory')}}">
+                <form method="post" action="{{route('user.acceptAppointment')}}">
                     @csrf
                     <div class="modal-header" style="text-align: center;">
                         {{--                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span--}}
                         {{--                            aria-hidden="true">&times;</span></button>--}}
-                        <h2 class="modal-title" id="myModalLabel">Delete</h2>
+                        <h2 class="modal-title" id="myModalLabel">Accept Appointment</h2>
                     </div>
                     <div class="modal-body" style="text-align: center;">
 
-                        Are you sure you want to delete ?
+                        Are you sure you want to accept this appointment ?
                         <input type="hidden" name="id" class="user-delete" value=""/>
                     </div>
                     <div class="modal-footer" style="text-align: center;">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-danger">Delete</button>
+                        <button type="submit" class="btn btn-success">Accept</button>
                     </div>
                 </form>
                 {{--                {!! Form::close() !!}--}}

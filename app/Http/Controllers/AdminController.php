@@ -241,11 +241,9 @@ class AdminController extends Controller
                     'status'=>'0',
                 ]);
 
-//                dd($details,$provider->email);
                 $message = new appointmentSendToProviders($details);
                 Mail::to($provider->email)->send($message);
             }
-//            dd($selectedProviders);
 
             return redirect()->back()->with('success','Email sent successfully!');
         }
